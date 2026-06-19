@@ -1,0 +1,15 @@
+$kind: http-request
+name: http://localhost:3000/products
+url: http://localhost:3000/products
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "productname": "Firework B",
+      "producttype": "Sparkler",
+      "productcost": 10.00,
+      "productsaleprice": 12.00,
+      "productquantity": 10
+    }
+order: 1781912421522
