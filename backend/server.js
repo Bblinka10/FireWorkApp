@@ -13,8 +13,8 @@ app.get("/test-db", async (req, res) => {
     res.json(result.rows);
 });
 
-app.use("/products", productsRouter);
 app.use(express.json());
+app.use("/products", productsRouter);
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

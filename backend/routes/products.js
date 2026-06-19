@@ -15,8 +15,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-module.exports = router;
-
 //
 // GET one product by ID
 //
@@ -25,7 +23,7 @@ router.get("/:productid", async (req, res) => {
     try {
         const { productid } = req.params;
 
-        const result = await poo.query(
+        const result = await pool.query(
             "SELECT * FROM products WHERE productid = $1",
             [productid]
         );
@@ -56,7 +54,7 @@ router.post("/", async (req, res) => {
         res.status(201).json(result.rows[0]);
     } catch (err) {
         console.error(err);
-        res.status(500).json({error: "Database error"});
+        res.status(500).json({error: err.message});
     }
 });
 
