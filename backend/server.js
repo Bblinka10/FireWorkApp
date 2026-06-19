@@ -14,6 +14,7 @@ app.get("/test-db", async (req, res) => {
 });
 
 app.use("/products", productsRouter);
+app.use(express.json());
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
