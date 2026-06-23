@@ -5,12 +5,20 @@ CREATE TABLE products(
     productcost DECIMAL(6, 2) NOT NULL,
     productsaleprice DECIMAL(6, 2) NOT NULL,
     productquantity INT NOT NULL
-)
+);
 
-CREATE TABLE invtransactions(
-    transactionid SERIAL PRIMARY KEY,
+CREATE TABLE sales(
+    saleid SERIAL PRIMARY KEY,
+    saletotal DECIMAL(7, 2) DEFAULT 0.00,
+    saledate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE saleitems(
+    saleitemid SERIAL PRIMARY KEY,
+    saleid INT NOT NULL,
     productid INT NOT NULL,
-    quantitychange INT NOT NULL,
-    transactiondate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (productid) REFERENCES products(productid)
+    quantity INT NOT NULL,
+    itemtotal DECIMAL(7, 2),
+    FOREIGN KEY (saleid) REFERENCES sales(saleid) ON DELETE CASCADE,
+    FOREIGN KEY (productid) REFERENCES products(productid) ON DELETE CASCADE
 )
