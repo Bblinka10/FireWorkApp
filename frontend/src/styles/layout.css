@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    background-image: url("../assets/Fireworks.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+}
+
+nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+nav * {
+    position: relative;
+    z-index: 1;
+}
+
+nav button {
+    font-size: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    position: absolute;
+    left: 12px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 0;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    background: #333;
+    transition: width 0.2s ease;
+}
+
+.sidebar.open {
+    width: 200px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #444;
+}
+
+main {
+    margin-top: 50px;
+    padding: 16px;
+    transition: margin-left 0.2s ease;
+    margin-left: 0;
+}
+
+.sidebar.open ~ main {
+    margin-left: 200px;
+}
+
+h2 {
+    color: white;
+
+}

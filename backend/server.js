@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cors = require("cors");
 
 const productsRouter = require("./routes/products");
 const salesRouter = require("./routes/sales");
@@ -14,6 +15,7 @@ app.get("/test-db", async (req, res) => {
     res.json(result.rows);
 });
 
+app.use(cors());
 app.use(express.json());
 app.use("/products", productsRouter);
 app.use("/sales", salesRouter);
