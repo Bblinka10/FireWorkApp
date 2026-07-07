@@ -80,5 +80,6 @@ main {
 
 h2 {
     color: white;
-
+    font-weight: bold;
+    font-size: 36px;
 }

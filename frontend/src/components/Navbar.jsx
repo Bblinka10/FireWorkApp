@@ -5,7 +5,7 @@ function Navbar({ toggleSidebar }) {
                 ☰
             </button>
 
-            <h2>BG FIREWORKS</h2>
+            <h2 id="nav-header">BG FIREWORKS</h2>
         </nav>
     );
 }

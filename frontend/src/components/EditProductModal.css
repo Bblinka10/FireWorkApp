@@ -1,0 +1,57 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.modal {
+    background: rgb(67, 73, 93);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 95%;
+}
+
+#delete-button {
+    background: red;
+}
+
+#close-button {
+    background: gray;
+}
