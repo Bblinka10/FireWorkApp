@@ -44,11 +44,11 @@ router.get("/:productid", async (req, res) => {
 //
 router.post("/", async (req, res) => {
     try {
-        const { productname, producttype, productcost, productsaleprice, productquantity } = req.body;
+        const { productname, producttype, productcost, productsaleprice, productquantity, imageurl } = req.body;
 
         const result = await pool.query(
-            "INSERT INTO products (productname, producttype, productcost, productsaleprice, productquantity) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-            [productname, producttype, productcost, productsaleprice, productquantity]
+            "INSERT INTO products (productname, producttype, productcost, productsaleprice, productquantity, imageurl) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+            [productname, producttype, productcost, productsaleprice, productquantity, imageurl]
         );
 
         res.status(201).json(result.rows[0]);

@@ -19,10 +19,40 @@ function AddProductModal({ onClose, onSave }) {
     };
 
     const handleSave = async () => {
-        await axios.post("http://localhost:3000/products", product);
+
+        let imageFilename = "";
+
+        if (selectedImage) {
+
+            const formData = new FormData();
+            formData.append("image", selectedImage);
+
+            const uploadResponse = await axios.post(
+                "http://localhost:3000/upload",
+                formData
+            );
+
+            console.log(uploadResponse.data)
+
+            imageFilename = uploadResponse.data.filename;
+
+        }
+
+        console.log({
+    ...product,
+    imageurl: imageFilename
+});
+
+        await axios.post("http://localhost:3000/products", {
+            ...product,
+            imageurl: imageFilename
+        });
+
         onSave();
         onClose();
     };
+
+    const [selectedImage, setSelectedImage] = useState(null);
 
 
 
@@ -68,6 +98,13 @@ function AddProductModal({ onClose, onSave }) {
                     value={product.productquantity}
                     onChange={handleChange}
                  />
+
+                 <label>Image</label>
+                 <input 
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setSelectedImage(e.target.files[0])}
+                />
                 
                     <button className="add-button" onClick={handleSave}>Add Product</button>
                 <button onClick={onClose}>Cancel</button>
